@@ -9,25 +9,22 @@ import { environment } from 'src/environments/environment';
 })
 export class AlbumService {
   private apiUrl: string = environment.apiUrl;
-  private cache$!: Observable<Album[]>;
 
   constructor(private httpClient: HttpClient) {}
 
   list(): Observable<Album[]> {
-    if (!this.cache$) {
-      this.cache$ = this.httpClient
-        .get<Album[]>(`${this.apiUrl}/albums`)
-        .pipe(shareReplay(1));
-    }
-
-    return this.cache$;
+    return this.httpClient.get<Album[]>(`${this.apiUrl}/albums`);
   }
 
-  get(idAlbum: string): Observable<Album> {
+  getThumb(idPhoto: number): Observable<Photo> {
+    return this.httpClient.get<Photo>(`${this.apiUrl}/photos/${idPhoto}`);
+  }
+
+  get(idAlbum: number): Observable<Album> {
     return this.httpClient.get<Album>(`${this.apiUrl}/albums/${idAlbum}`);
   }
 
-  getPhotos(idAlbum: string): Observable<Photo[]> {
+  getPhotos(idAlbum: number): Observable<Photo[]> {
     return this.httpClient.get<Photo[]>(
       `${this.apiUrl}/photos?idAlbum=${idAlbum}`
     );

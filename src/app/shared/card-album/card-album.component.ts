@@ -8,7 +8,7 @@ import { Album } from 'src/app/core/types/types';
   styleUrls: ['./card-album.component.scss'],
 })
 export class CardAlbumComponent {
-  @Input() album!: Album;
+  @Input() album!: Album & { thumbUrl: string };
 
   constructor(private router: Router) {}
 

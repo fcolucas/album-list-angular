@@ -8,13 +8,24 @@ import { Album } from 'src/app/core/types/types';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  albums!: Album[];
+  albums!: (Album & { thumbUrl: string })[];
 
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
     this.albumService.list().subscribe((response) => {
-      this.albums = response;
+      const albums: (Album & { thumbUrl: string })[] = [];
+      response.forEach((album) => {
+        const idPhoto = 1 + (album.id - 1) * 50;
+        this.albumService.getThumb(idPhoto).subscribe((photo) => {
+          albums.push({
+            ...album,
+            thumbUrl: photo.url,
+          });
+        });
+      });
+
+      this.albums = albums;
     });
   }
 }

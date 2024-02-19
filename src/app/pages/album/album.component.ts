@@ -21,11 +21,11 @@ export class AlbumComponent implements OnInit {
   ngOnInit() {
     const albumId = this.route.snapshot.paramMap.get('id');
     if (albumId) {
-      this.albumService.get(albumId).subscribe((album) => {
+      this.albumService.get(Number(albumId)).subscribe((album) => {
         this.albumTitle = album.title;
       });
 
-      this.albumService.getPhotos(albumId).subscribe((photos) => {
+      this.albumService.getPhotos(Number(albumId)).subscribe((photos) => {
         this.photos = photos.slice(0, 10);
       });
     }
