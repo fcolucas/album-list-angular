@@ -1,0 +1,21 @@
+<form
+  [formGroup]="loginFormService.formLogin"
+  (ngSubmit)="submit()"
+  class="login-form"
+>
+  <mat-form-field class="input-container" appearance="outline">
+    <mat-label>Usuário</mat-label>
+    <input matInput placeholder="Digite seu usuário" formControlName="login" />
+  </mat-form-field>
+  <mat-form-field class="input-container" appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input
+      matInput
+      placeholder="Digite sua senha"
+      type="password"
+      formControlName="password"
+    />
+  </mat-form-field>
+
+  <button type="submit">Entrar</button>
+</form>

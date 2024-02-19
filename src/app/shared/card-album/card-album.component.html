@@ -1,0 +1,11 @@
+<mat-card class="card-album">
+  <img mat-card-image src="assets/imagens/Veneza.png" alt="Imagem de Veneza" />
+  <mat-card-content>
+    <span>{{ album.title }}</span>
+  </mat-card-content>
+  <mat-card-actions class="card-album-actions">
+    <button mat-flat-button color="primary" [routerLink]="['/album', album.id]">
+      Ver álbum
+    </button>
+  </mat-card-actions>
+</mat-card>

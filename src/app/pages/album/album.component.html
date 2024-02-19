@@ -1,0 +1,17 @@
+<section class="album-list">
+  <app-container>
+    <div class="album-list-header">
+      <button
+        mat-icon-button
+        aria-label="Example icon button with a vertical three dot icon"
+        [routerLink]="['/album']"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h2>Fotos de {{ albumTitle }}</h2>
+    </div>
+    <div class="card-wrapper">
+      <app-card-photo *ngFor="let photo of photos" [photo]="photo" />
+    </div>
+  </app-container>
+</section>

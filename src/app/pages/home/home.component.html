@@ -1,0 +1,8 @@
+<section class="homepage">
+  <app-container>
+    <h2>Lista de Álbuns</h2>
+    <div class="card-wrapper">
+      <app-card-album *ngFor="let album of albums" [album]="album" />
+    </div>
+  </app-container>
+</section>
